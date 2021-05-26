@@ -36,5 +36,5 @@ def mqtt_publish(arg_broker_url, arg_broker_port, arg_mqtt_topic, arg_mqtt_messa
 
         mqtt_client.loop_stop() #stop the loop
         return 0
-    except:
-        return -1
+    except Exception as e:
+        return e
