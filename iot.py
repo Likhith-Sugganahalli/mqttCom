@@ -21,8 +21,8 @@ def mqtt_subscribe_thread_start(arg_callback_func, arg_broker_url, arg_broker_po
         # mqtt_client.loop_forever() # starts a blocking infinite loop
         mqtt_client.loop_start()    # starts a new thread
         return 0
-    except:
-        return -1
+    except Exception as e:
+        return e
 
 def mqtt_publish(arg_broker_url, arg_broker_port, arg_mqtt_topic, arg_mqtt_message, arg_mqtt_qos):
     try:        
