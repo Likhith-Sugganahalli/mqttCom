@@ -15,7 +15,7 @@ def mqtt_subscribe_thread_start(arg_callback_func, arg_broker_url, arg_broker_po
     try:
         mqtt_client = mqtt.Client()
         mqtt_client.on_message = arg_callback_func
-        mqtt_client.connect(arg_broker_url, arg_broker_port)
+        mqtt_client.connect(arg_broker_url, int(arg_broker_port))
         mqtt_client.subscribe(arg_mqtt_topic, arg_mqtt_qos)
         time.sleep(1) # wait
         # mqtt_client.loop_forever() # starts a blocking infinite loop
@@ -27,7 +27,7 @@ def mqtt_subscribe_thread_start(arg_callback_func, arg_broker_url, arg_broker_po
 def mqtt_publish(arg_broker_url, arg_broker_port, arg_mqtt_topic, arg_mqtt_message, arg_mqtt_qos):
     try:        
         mqtt_client = mqtt.Client("mqtt_pub")
-        mqtt_client.connect(arg_broker_url, arg_broker_port)
+        mqtt_client.connect(arg_broker_url, int(arg_broker_port))
         mqtt_client.loop_start()
 
         print("Publishing message to topic", arg_mqtt_topic)
